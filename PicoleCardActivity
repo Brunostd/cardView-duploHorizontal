@@ -1,0 +1,117 @@
+package com.example.gelada.activity;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.gelada.R;
+import com.example.gelada.adapter.PicoleAdapter;
+import com.example.gelada.adapter.PicoleCoberturaAdapter;
+import com.example.gelada.model.Picole;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PicoleCardActivity extends AppCompatActivity {
+
+    private Button abrirMenuPrincipal;
+    private RecyclerView recyclerView, recyclerView2;
+    private List<Picole> postagemPicoleComum = new ArrayList<>();
+    private List<Picole> postagemPicoleCobertura = new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_picole_card);
+        
+        getSupportActionBar().hide();
+
+        abrirMenuPrincipal = findViewById(R.id.button2);
+
+        abrirMenuPrincipal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity( intent );
+            }
+        });
+
+        recyclerView =findViewById(R.id.recyclerView);
+        recyclerView2 =findViewById(R.id.recyclerView2);
+
+        //Define layout
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        layoutManager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager( layoutManager );
+        recyclerView2.setLayoutManager( layoutManager2 );
+
+        //Define adapter
+        this.prepararPicoleComum();
+        this.prepararPicoleCobertura();
+        PicoleAdapter picoleAdapter = new PicoleAdapter( postagemPicoleComum);
+        PicoleCoberturaAdapter picoleAdapter2 = new PicoleCoberturaAdapter( postagemPicoleCobertura );
+        recyclerView.setAdapter( picoleAdapter );
+        recyclerView2.setAdapter( picoleAdapter2 );
+
+    }
+
+    public void prepararPicoleComum(){
+        Picole p = new Picole("Picole Comum", "Coco", R.drawable.coco, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Morango", R.drawable.morango, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Castanha", R.drawable.castanha, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Leite Condesado", R.drawable.leitecondesado, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Maracujá", R.drawable.maracuja, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Graviola", R.drawable.graviola, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Uva", R.drawable.uva, "0.75", "0");
+        postagemPicoleComum.add( p );
+
+        p = new Picole("Picole Comum", "Chiclete", R.drawable.azul, "0.75", "0");
+        postagemPicoleComum.add( p );
+    }
+
+    public void prepararPicoleCobertura(){
+        Picole p = new Picole("Picole Cobertura", "Chocolate", R.drawable.chocolate, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Coco", R.drawable.coco, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Morango", R.drawable.morango, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Castanha", R.drawable.castanha, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Leite Condesado", R.drawable.leitecondesado, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Chocolate Branco", R.drawable.chocolatebranco, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+
+        p = new Picole("Picole Cobertura", "Maracujá", R.drawable.maracuja, "0.75", "0");
+        postagemPicoleCobertura.add( p );
+    }
+}
