@@ -1,0 +1,74 @@
+package com.example.gelada.model;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModel;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+public class Picole extends ViewModel implements Serializable {
+
+    private String textTipoPicole;
+    private String textSaborPicole;
+    private int imagemPicole;
+    private String textValorPicole;
+    private String quantidadePicole;
+
+    public Picole() {
+    }
+
+    public Picole(String textTipoPicole, String textSaborPicole, int imagemPicole, String textValorPicole, String quantidadePicole) {
+        this.textTipoPicole = textTipoPicole;
+        this.textSaborPicole = textSaborPicole;
+        this.imagemPicole = imagemPicole;
+        this.textValorPicole = textValorPicole;
+        this.quantidadePicole = quantidadePicole;
+    }
+
+    public String getTextTipoPicole() {
+        return textTipoPicole;
+    }
+
+    public void setTextTipoPicole(String textTipoPicole) {
+        this.textTipoPicole = textTipoPicole;
+    }
+
+    public String getTextSaborPicole() {
+        return textSaborPicole;
+    }
+
+    public void setTextSaborPicole(String textSaborPicole) {
+        this.textSaborPicole = textSaborPicole;
+    }
+
+    public int getImagemPicole() {
+        return imagemPicole;
+    }
+
+    public void setImagemPicole(int imagemPicole) {
+        this.imagemPicole = imagemPicole;
+    }
+
+    public String getTextValorPicole() {
+        return textValorPicole;
+    }
+
+    public void setTextValorPicole(String textValorPicole) {
+        this.textValorPicole = textValorPicole;
+    }
+
+    public String getQuantidadePicole() {
+        return quantidadePicole;
+    }
+
+    public void setQuantidadePicole(String quantidadePicole) {
+        this.quantidadePicole = quantidadePicole;
+    }
+
+}
