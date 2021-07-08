@@ -1,0 +1,144 @@
+package com.example.gelada.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gelada.R;
+import com.example.gelada.model.Picole;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+public class PicoleCoberturaAdapter extends RecyclerView.Adapter<PicoleCoberturaAdapter.MyViewHolder> {
+
+    private List<Picole> postagemPicoleCobertura;
+
+    public PicoleCoberturaAdapter (List<Picole> listaPicoleCobertura){
+        this.postagemPicoleCobertura = listaPicoleCobertura;
+    }
+
+    int quantidadeCocoCobertura=0, quantidadeMorangoCobertura=0, quantidadeCastanhaCobertura=0, quantidadeLeiteCobertura=0;
+    @NonNull
+    @NotNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View itemListaCobertura = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.postagem_detalhe_picole, parent, false);
+
+        return new MyViewHolder( itemListaCobertura );
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull PicoleCoberturaAdapter.MyViewHolder holder, int position) {
+        Picole picole = postagemPicoleCobertura.get( position );
+
+        holder.tipoNomeCobertura.setText(picole.getTextTipoPicole());
+        holder.tipoSaborCobertura.setText(picole.getTextSaborPicole());
+        holder.saborImagemCobertura.setImageResource(picole.getImagemPicole());
+        holder.valorPicoleCobertura.setText(picole.getTextValorPicole());
+        holder.quantidadePicoleCobertura.setText(picole.getQuantidadePicole());
+
+        if(picole == postagemPicoleCobertura.get(0)){
+            holder.maisPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCocoCobertura+=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeCocoCobertura));
+                }
+            });
+            holder.menosPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCocoCobertura-=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeCocoCobertura));
+                }
+            });
+        }
+
+       else if(picole == postagemPicoleCobertura.get(1)){
+            holder.maisPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMorangoCobertura+=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeMorangoCobertura));
+                }
+            });
+            holder.menosPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMorangoCobertura-=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeMorangoCobertura));
+                }
+            });
+        }
+
+        else if(picole == postagemPicoleCobertura.get(2)){
+            holder.maisPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCastanhaCobertura+=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeCastanhaCobertura));
+                }
+            });
+            holder.menosPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCastanhaCobertura-=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeCastanhaCobertura));
+                }
+            });
+        }
+
+        else if(picole == postagemPicoleCobertura.get(3)){
+            holder.maisPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeLeiteCobertura+=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeLeiteCobertura));
+                }
+            });
+            holder.menosPicoleCobertura.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeLeiteCobertura-=1;
+                    holder.quantidadePicoleCobertura.setText(String.valueOf(quantidadeLeiteCobertura));
+                }
+            });
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return postagemPicoleCobertura.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+
+        private TextView tipoNomeCobertura, tipoSaborCobertura;
+        private ImageView saborImagemCobertura;
+        private TextView valorPicoleCobertura, quantidadePicoleCobertura;
+        private Button maisPicoleCobertura, menosPicoleCobertura;
+
+        public MyViewHolder(@NonNull @NotNull View itemView) {
+            super(itemView);
+
+            tipoNomeCobertura = itemView.findViewById(R.id.textTipoPicole);
+            tipoSaborCobertura = itemView.findViewById(R.id.textSaborPicole);
+            saborImagemCobertura = itemView.findViewById(R.id.imageSabor);
+            valorPicoleCobertura = itemView.findViewById(R.id.textValorPicole);
+            quantidadePicoleCobertura = itemView.findViewById(R.id.textQuantidadePicole);
+            maisPicoleCobertura = itemView.findViewById(R.id.buttonMaisPicole);
+            menosPicoleCobertura = itemView.findViewById(R.id.buttonMenosPicole);
+
+        }
+    }
+
+}
