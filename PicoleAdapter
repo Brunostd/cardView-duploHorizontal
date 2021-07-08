@@ -1,0 +1,212 @@
+package com.example.gelada.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gelada.R;
+import com.example.gelada.model.Picole;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+public class PicoleAdapter extends RecyclerView.Adapter<PicoleAdapter.MyViewHolder> {
+
+    private List<Picole> postagemPicole;
+
+    public PicoleAdapter(List<Picole> listaPicole){
+        this.postagemPicole = listaPicole;
+    }
+
+    int quantidadeCoco=0, quantidadeMorango=0, quantidadeCastanha=0, quantidadeLeite=0;
+    int quantidadeMaracuja=0, quantidadeGraviola=0, quantidadeUva=0, quantidadeChiclete=0;
+    @NonNull
+    @NotNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        View itemLista = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.postagem_detalhe_picole, parent, false);
+
+        return new MyViewHolder(itemLista);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull PicoleAdapter.MyViewHolder holder, int position) {
+
+        Picole picole = postagemPicole.get( position );
+
+        holder.tipoNome.setText(picole.getTextTipoPicole());
+        holder.tipoSabor.setText(picole.getTextSaborPicole());
+        holder.saborImagem.setImageResource(picole.getImagemPicole());
+        holder.valorPicole.setText(picole.getTextValorPicole());
+        holder.quantidadePicole.setText(picole.getQuantidadePicole());
+
+        if (picole == postagemPicole.get(0)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCoco += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeCoco));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCoco-=1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeCoco));
+                }
+            });
+        }
+
+       else if (picole == postagemPicole.get(1)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMorango += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeMorango));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMorango -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeMorango));
+                }
+            });
+        }
+
+        else if (picole == postagemPicole.get(2)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCastanha += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeCastanha));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeCastanha -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeCastanha));
+                }
+            });
+        }
+
+        else if (picole == postagemPicole.get(3)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeLeite += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeLeite));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeLeite -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeLeite));
+                }
+            });
+        }
+        else if (picole == postagemPicole.get(4)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMaracuja += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeMaracuja));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeMaracuja -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeMaracuja));
+                }
+            });
+        }
+
+        else if (picole == postagemPicole.get(5)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeGraviola += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeGraviola));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeGraviola -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeGraviola));
+                }
+            });
+        }
+
+        else if (picole == postagemPicole.get(6)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeUva += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeUva));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeUva -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeUva));
+                }
+            });
+        }
+
+        else if (picole == postagemPicole.get(7)) {
+            holder.maisPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeChiclete += 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeChiclete));
+                }
+            });
+            holder.menosPicole.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    quantidadeChiclete -= 1;
+                    holder.quantidadePicole.setText(String.valueOf(quantidadeChiclete));
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return postagemPicole.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        private TextView tipoNome, tipoSabor;
+        private ImageView saborImagem;
+        private TextView valorPicole, quantidadePicole;
+        private Button maisPicole, menosPicole;
+
+        public MyViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
+            super(itemView);
+            tipoNome = itemView.findViewById(R.id.textTipoPicole);
+            tipoSabor = itemView.findViewById(R.id.textSaborPicole);
+            saborImagem = itemView.findViewById(R.id.imageSabor);
+            valorPicole = itemView.findViewById(R.id.textValorPicole);
+            quantidadePicole = itemView.findViewById(R.id.textQuantidadePicole);
+            maisPicole = itemView.findViewById(R.id.buttonMaisPicole);
+            menosPicole = itemView.findViewById(R.id.buttonMenosPicole);
+
+        }
+    }
+
+}
